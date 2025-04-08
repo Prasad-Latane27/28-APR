@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>The Day We Meet 💖</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #fff0f5;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+      animation: fadeIn 1.2s ease-in;
+      position: relative;
+      overflow: hidden;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      color: #ff4081;
+      margin-bottom: 10px;
+    }
+
+    
+    
+
+    @keyframes glowAnim {
+      from { text-shadow: 0 0 5px #ff69b4, 0 0 10px #ff69b4; }
+      to { text-shadow: 0 0 15px #ff1493, 0 0 25px #ff1493; }
+    }
+
+    .message {
+      font-size: 1.1rem;
+      margin-bottom: 25px;
+      color: #444;
+      max-width: 500px;
+      padding: 0 20px;
+    }
+
+    .plan {
+      background: white;
+      padding: 20px 30px;
+      border-radius: 20px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+      max-width: 400px;
+    }
+
+    .plan p {
+      font-size: 1.1rem;
+      margin: 10px 0;
+      color: #333;
+    }
+
+    button {
+      margin-top: 30px;
+      padding: 10px 20px;
+      background-color: #ff4081;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.3s;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 12px rgba(255, 64, 129, 0.4);
+    }
+
+    .heart {
+      position: absolute;
+      color: #ff69b4;
+      font-size: 24px;
+      animation: floatUp 3s linear forwards;
+    }
+
+    @keyframes floatUp {
+      0% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+      100% {
+        opacity: 0;
+        transform: translateY(-200px) scale(1.5);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>The Day We Meet 💞</h1>
+
+
+
+  <div class="message">
+    <p>This page isn’t just a plan — it’s a <strong>promise</strong>.</p>
+    <p>Even though we have to wait a while, I want you to know I’m already dreaming about the day we meet.</p>
+    <p>And when that day comes... here's exactly how it's going to go:</p>
+  </div>
+
+  <div class="plan">
+    <p>1. 🎬 We'll start with a cozy movie — your choice</p>
+    <p>2. 🍽️ A meal at your favorite place</p>
+    <p>3. Idk you say lol</p>
+  </div>
+
+  <button onclick="window.location.href='returngift.html'">Next</button>
+
+  <audio id="bg-music" src="/audio/surprisebackground.mp3" autoplay loop></audio>
+
+  <script>
+    // Floating heart confetti
+    function launchHearts() {
+      for (let i = 0; i < 25; i++) {
+        const heart = document.createElement('div');
+        heart.classList.add('heart');
+        heart.innerHTML = '💖';
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.top = '100vh';
+        heart.style.fontSize = (16 + Math.random() * 20) + 'px';
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+          heart.remove();
+        }, 3000);
+      }
+    }
+
+    // Launch hearts every second for 3 bursts
+    let bursts = 0;
+    const interval = setInterval(() => {
+      launchHearts();
+      bursts++;
+      if (bursts === 3) clearInterval(interval);
+    }, 1000);
+
+    // Ensure audio plays (some browsers block autoplay without interaction)
+    window.addEventListener('click', () => {
+      const audio = document.getElementById('bg-music');
+      if (audio.paused) {
+        audio.play();
+      }
+    });
+  </script>
+
+</body>
+</html>
